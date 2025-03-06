@@ -10,6 +10,7 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 const USER_EMAIL = process.env.USER_EMAIL;
+const APP_PASSWORD = process.env.APP_PASSWORD;
 
 type sendMode = "single" | "multiple";
 
@@ -26,24 +27,32 @@ async function sendEmail() {
     port: 465,
     secure: true,
     auth: {
-      type: "OAuth2",
+      // type: "OAuth2",
       user: USER_EMAIL,
-      clientId: CLIENT_ID,
-      clientSecret: CLIENT_SECRET,
-      refreshToken: REFRESH_TOKEN,
-      accessToken: accessToken
+      pass: APP_PASSWORD
+      // clientId: CLIENT_ID,
+      // clientSecret: CLIENT_SECRET,
+      // refreshToken: REFRESH_TOKEN,
+      // accessToken: accessToken
     },
   });
 
   const mailOptions: Mail.Options = {
     from: USER_EMAIL,
-    to: "testaccount@example.com",
+    to: "testemail@example.com",
     subject: "test",
     text: "Test test test"
   };
 
-  const result = await transporter.sendMail(mailOptions);
-  console.log(`Email sent: ${result.messageId}`);
+  try {
+    const result = await transporter.sendMail(mailOptions);
+    console.log(`Email sent: ${result.messageId}`);
+  }
+  catch (err) {
+    console.error(`An error has occured while sending email`, err);
+  }
+
+  // TODO: for some reason oauth2 auth doesn't want to send emails. the code works with app password, but it's not an approach that I would want to follow
 }
 
 sendEmail();

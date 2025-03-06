@@ -5,6 +5,7 @@ declare global {
       CLIENT_SECRET: string;
       REFRESH_TOKEN: string;
       USER_EMAIL: string;
+      APP_PASSWORD: string;
     }
   }
 }
