@@ -13,7 +13,8 @@ const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_U
 async function getOauthToken() {
   const authUrl = oauth2Client.generateAuthUrl({
     access_type: "offline",
-    scope: "https://www.googleapis.com/auth/gmail.modify"
+    scope: "https://www.googleapis.com/auth/gmail.modify",
+    prompt: "consent"
   });
 
   console.log(`Authorize this app by visiting ${authUrl}`);
@@ -27,12 +28,8 @@ async function getOauthToken() {
   rl.close();
 
   const { tokens } = await oauth2Client.getToken(code);
-  if (tokens.refresh_token === undefined) {
-    console.log("Refresh token already sent out before");
-  }
-  else {
-    console.log(`Your refresh token: ${tokens.refresh_token}`);
-  }
+
+  console.log(`Your refresh token: ${tokens.refresh_token}`);
 
   // todo: add error handling
 }

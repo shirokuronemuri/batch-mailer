@@ -10,7 +10,7 @@ Send batch emails from a connected google account, attachment support included.
 
 ## Project setup
 
-1. Create a new app in [Google Cloud Console](<(https://console.cloud.google.com/)>) with the account that you will use; set this account's email as a tester, select `.../auth/gmail.modify` in scope list to allow sending emails through the API, create OAuth2 credentials, set application type to a web app, set redirect URI to `https://developers.google.com/oauthplayground` and download the file with credentials
+1. Create a new app in [Google Cloud Console](<(https://console.cloud.google.com/)>) with the account that you will use; set the tester email, select `.../auth/gmail.modify` in the scope list to allow sending emails through the API; create OAuth2 credentials, set application type to a web app, set redirect URI to `https://developers.google.com/oauthplayground` and download the file with credentials
 
 2. Install the dependencies and build the project:
 
@@ -27,6 +27,6 @@ yarn build
 yarn generate
 ```
 
-5. Follow the link in the console, login with the account that you have specified before as a tester, copy the code in the `Authorization code` field WITHOUT pressing "Exchange authorization code for tokens" (this is important!) and paste it into your console prompt, which will generate a refresh token for you, make sure to copy and paste it into `REFRESH_TOKEN` field in `.env` file
+5. Follow the link in the console, login with the account that you have specified before as a tester, copy the code in the `Authorization code` field WITHOUT pressing "Exchange authorization code for tokens" (this is important!) and paste it into your console prompt, which will generate a refresh token for you, make sure to copy and paste it into `REFRESH_TOKEN` field in the `.env` file
 
 ## Usage
