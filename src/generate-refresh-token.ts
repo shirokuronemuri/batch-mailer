@@ -14,7 +14,7 @@ async function getOauthToken() {
   const authUrl = oauth2Client.generateAuthUrl({
     access_type: "offline",
     scope: "https://www.googleapis.com/auth/gmail.modify",
-    prompt: "consent"
+    prompt: "consent" // To generate refresh token repeatedly
   });
 
   console.log(`Authorize this app by visiting ${authUrl}`);
