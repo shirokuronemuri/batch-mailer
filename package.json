@@ -5,6 +5,12 @@
   "repository": "git@github.com:shirokuronemuri/batch-mailer.git",
   "author": "Ihor Pavliuk <akira.pavl@gmail.com>",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "generate": "node dist/generate-refresh-token.js",
+    "start": "node dist/index.js"
+  },
   "devDependencies": {
     "@types/node": "^22.13.9",
     "@types/nodemailer": "^6.4.17",
