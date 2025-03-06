@@ -1,0 +1,2 @@
+type sendMode = "single" | "multiple";
+
